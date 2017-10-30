@@ -36,6 +36,7 @@ namespace Hollard.CsvParserExtensions
             }
             return output.ToArray(); ;
         }
+
         public static void PopulateFromCsv(this IList list, string[] CsvLines, char[] seperators)
         {
             Type type = GetListChildObjectType(list);

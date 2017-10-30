@@ -7,6 +7,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hollard.CsvParser", "Hollar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hollard.CsvParserTests", "Hollard.CsvParserTests\Hollard.CsvParserTests.csproj", "{8B93CF3E-4C56-4CC2-B94A-874EB6280998}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hollard.Reporting", "Hollard.Reporting\Hollard.Reporting.csproj", "{EB451C89-066B-47E4-ADE2-8864A9F27C4B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hollard.ConsoleApp", "Hollard.ConsoleApp\Hollard.ConsoleApp.csproj", "{3A111115-9D26-4226-9A00-B7A1853A25B4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +25,14 @@ Global
 		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EB451C89-066B-47E4-ADE2-8864A9F27C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EB451C89-066B-47E4-ADE2-8864A9F27C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EB451C89-066B-47E4-ADE2-8864A9F27C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EB451C89-066B-47E4-ADE2-8864A9F27C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A111115-9D26-4226-9A00-B7A1853A25B4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A111115-9D26-4226-9A00-B7A1853A25B4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A111115-9D26-4226-9A00-B7A1853A25B4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A111115-9D26-4226-9A00-B7A1853A25B4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,7 +19,7 @@ namespace Hollard.CsvParser.Tests
         public void NullCSVPathShouldThrowException()
         {
             CsvReader csvReader = new CsvReader();
-            IEnumerable<Contact> returnValue = csvReader.ReadCsv<Contact>(null);
+            IEnumerable<Client> returnValue = csvReader.ReadCsv<Client>(null);
         }
 
         [TestMethod()]
@@ -27,7 +27,7 @@ namespace Hollard.CsvParser.Tests
         public void InvalidCSVPathShouldThrowException()
         {
             CsvReader csvReader = new CsvReader();
-            IEnumerable<Contact> returnValue = csvReader.ReadCsv<Contact>("c:\\DoesNotExist.csv");
+            IEnumerable<Client> returnValue = csvReader.ReadCsv<Client>("c:\\DoesNotExist.csv");
         }
 
 
@@ -35,7 +35,7 @@ namespace Hollard.CsvParser.Tests
         public void EnsureAllRecordsAreReturned()
         {
             CsvReader csvReader = new CsvReader();
-            IEnumerable<Contact> returnValue = csvReader.ReadCsv<Contact>(csvFilePath);
+            IEnumerable<Client> returnValue = csvReader.ReadCsv<Client>(csvFilePath);
 
             Assert.AreEqual(8, returnValue.Count());
         }
@@ -44,7 +44,7 @@ namespace Hollard.CsvParser.Tests
         public void EnsureCorrectRecordsReturned()
         {
             CsvReader csvReader = new CsvReader();
-            IEnumerable<Contact> actualContactList = csvReader.ReadCsv<Contact>(csvFilePath);
+            IEnumerable<Client> actualContactList = csvReader.ReadCsv<Client>(csvFilePath);
             var firstContactActual = actualContactList.FirstOrDefault();
             var lastContactActual = actualContactList.LastOrDefault();
 
@@ -60,7 +60,7 @@ namespace Hollard.CsvParser.Tests
         }
     }
 
-    public class Contact {
+    public class Client {
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Address { get; set; }
