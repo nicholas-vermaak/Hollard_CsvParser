@@ -14,22 +14,22 @@ namespace Hollard.CsvParser2
         {
             List<string> output = new List<string>();
 
-            //Create Header
-            string headerCsvValue = string.Empty;
+            //TODO: Refactor this
+            //string headerCsvValue = string.Empty;
             PropertyInfo[] properties = GetListChildObjectType(list).GetRuntimeProperties().ToArray();
 
-            for (int i = 0;  i < properties.Length;  i++)
-            {
-               headerCsvValue += properties[i].Name;
+            string headerCsvValue = string.Join(",", properties.Select(p=>p.Name));
 
-                if (i < properties.Length - 1)
-                {
-                    headerCsvValue += ",";
-                }
-            }
+            //for (int i = 0;  i < properties.Length;  i++)
+            //{
+            //   headerCsvValue += properties[i].Name;
+
+            //    if (i < properties.Length - 1)
+            //    {
+            //        headerCsvValue += ",";
+            //    }
+            //}
             output.Add(headerCsvValue);
-
-
 
             
             bool isHeaderAdded = false;
