@@ -56,6 +56,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="AddressHelperTests.cs" />
     <Compile Include="CsvReaderTests.cs" />
     <Compile Include="CsvWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

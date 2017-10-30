@@ -1,7 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.IO;
-using Hollard.CsvParser2;
+using Hollard.CsvParserExtensions;
 using System.Linq;
 
 namespace Hollard.CsvParserTests
@@ -11,14 +11,14 @@ namespace Hollard.CsvParserTests
     {
         const string csvBasePath = @"data\";
         const string dataFile = @"data\data.csv";
-        List<char> sepeartors = new List<char>() {',' };
+        List<char> sepeartors = new List<char>() { ',' };
 
         [TestMethod]
         public void PopulateAListWithObjectFromCsvStrings()
         {
             string[] csvData = GetTestData();
             List<Contact> contactList = new List<Contact>();
-            
+
             contactList.PopulateFromCsv(csvData, sepeartors.ToArray());
             Assert.AreEqual(8, contactList.Count);
         }
@@ -26,28 +26,48 @@ namespace Hollard.CsvParserTests
         [TestMethod]
         public void TestGrouping()
         {
+            //Create a file show the frequency of the first and last names ordered by frequency descending and then alphabetically ascending.
+            //Example(not what’s expected):
             string[] csvData = GetTestData();
 
             List<Contact> contactList = new List<Contact>();
             contactList.PopulateFromCsv(csvData, sepeartors.ToArray());
 
-            var groupedByName = contactList
-                .GroupBy(c => c.FirstName)
-                .Select(grp => new
-                {
-                    Name = grp.Key,
-                    Count = grp.Count()
-                })
-                .OrderByDescending(g=>g.Count).ThenBy(g=>g.Name)
-                .ToList();
+            //First Question
+            var firstNameList = contactList.Select(c => new { NameKey = c.FirstName });
+            var lastNameList = contactList.Select(c => new { NameKey = c.LastName });
 
+            var reportQuery = firstNameList.Concat(lastNameList)
+                            .GroupBy(c=>c.NameKey)
+                            .Select(grp => new
+                            {
+                                NameKey = grp.Key,
+                                Frequency = grp.Count()
+                            })
+                            .OrderByDescending(c=>c.Frequency)
+                            .ThenBy(c=>c.NameKey);
+            //Second QUestion
+            var orderedByStreetName = contactList
+                .Select(c => new
+                {
+                   orderByField = ExtractStreetName(c.Address),
+                   c.Address,
+                   c.FirstName,
+                   c.LastName,
+                   c.PhoneNumber,
+                }).OrderBy(c=>c.orderByField);
+        }
+
+        private string ExtractStreetName(string address)
+        {
+            return address + "updated";
         }
 
         [TestMethod]
         public void CanOutputHeadersAsCSV()
         {
             List<Contact> contactList = new List<Contact>();
-            contactList.Add(new Contact() {Address="22 Test Address", FirstName="Nicholas", LastName="Vermaak" });
+            contactList.Add(new Contact() { Address = "22 Test Address", FirstName = "Nicholas", LastName = "Vermaak" });
 
             string[] csvOutput = contactList.ToCsv();
             Assert.AreEqual("FirstName,LastName,Address,PhoneNumber", csvOutput[0]);
@@ -58,7 +78,7 @@ namespace Hollard.CsvParserTests
         public void CanOutput1DataRowAsCSV()
         {
             List<Contact> contactList = new List<Contact>();
-            contactList.Add(new Contact() { Address = "22 Test Address", FirstName = "Nicholas", LastName = "Vermaak", PhoneNumber="0823302831" });
+            contactList.Add(new Contact() { Address = "22 Test Address", FirstName = "Nicholas", LastName = "Vermaak", PhoneNumber = "0823302831" });
 
             string[] csvOutput = contactList.ToCsv();
             Assert.AreEqual(2, csvOutput.Length);
@@ -92,7 +112,7 @@ namespace Hollard.CsvParserTests
         {
             List<Contact> contactList = new List<Contact>();
             contactList.Add(new Contact() { Address = "22 Test Address", FirstName = "Nicholas", PhoneNumber = "0823302831" });
-            contactList.Add(new Contact() { Address = "22 Test Address", FirstName = "Nicholas",LastName="Vermaak"});
+            contactList.Add(new Contact() { Address = "22 Test Address", FirstName = "Nicholas", LastName = "Vermaak" });
 
             string[] csvOutput = contactList.ToCsv();
             Assert.AreEqual(3, csvOutput.Length);
@@ -102,7 +122,7 @@ namespace Hollard.CsvParserTests
         }
 
         [TestMethod]
-        public void CallingPopulateReturnsJustHeaderValues()
+        public void CallingPopulateOnEmptyListReturnsJustHeaderValues()
         {
             List<Contact> emptyList = new List<Contact>();
             string[] csvRows = emptyList.ToCsv();
@@ -111,20 +131,14 @@ namespace Hollard.CsvParserTests
             Assert.AreEqual(1, csvRows.Length);
         }
 
-        [TestMethod]
-        public void CanOutputEmptyDataRowsAsCSV()
-        {
-
-        }
-
-            private string[] GetTestData()
+        private string[] GetTestData()
         {
             return File.ReadAllLines(dataFile);
 
         }
 
 
-      
+
     }
 
     public class Contact

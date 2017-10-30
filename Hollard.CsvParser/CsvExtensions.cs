@@ -6,40 +6,20 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Hollard.CsvParser2
+namespace Hollard.CsvParserExtensions
 {
     public static class CsvExtensions
     {
         public static string[] ToCsv(this IList list)
         {
             List<string> output = new List<string>();
-
-            //TODO: Refactor this
-            //string headerCsvValue = string.Empty;
             PropertyInfo[] properties = GetListChildObjectType(list).GetRuntimeProperties().ToArray();
 
             string headerCsvValue = string.Join(",", properties.Select(p=>p.Name));
-
-            //for (int i = 0;  i < properties.Length;  i++)
-            //{
-            //   headerCsvValue += properties[i].Name;
-
-            //    if (i < properties.Length - 1)
-            //    {
-            //        headerCsvValue += ",";
-            //    }
-            //}
             output.Add(headerCsvValue);
 
-            
-            bool isHeaderAdded = false;
             foreach (var listItem in list)
             {
-                if (!isHeaderAdded)
-                {
-                    isHeaderAdded = true;
-                    
-                }
                 string bodyOutput = string.Empty;
                 for (int i = 0; i < properties.Length; i++)
                 {
@@ -54,9 +34,6 @@ namespace Hollard.CsvParser2
                 }
                 output.Add(bodyOutput);
             }
-
-
-
             return output.ToArray(); ;
         }
         public static void PopulateFromCsv(this IList list, string[] CsvLines, char[] seperators)
@@ -106,3 +83,4 @@ namespace Hollard.CsvParser2
         }
     }
 }
+//https://stackoverflow.com/questions/3199604/is-there-a-quick-way-to-convert-an-entity-to-csv-file
