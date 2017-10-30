@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2005
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hollard.CsvParser", "Hollard.CsvParser\Hollard.CsvParser.csproj", "{FE17E6D2-966E-4778-9179-6F01CD3C6891}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hollard.CsvParserTests", "Hollard.CsvParserTests\Hollard.CsvParserTests.csproj", "{8B93CF3E-4C56-4CC2-B94A-874EB6280998}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE17E6D2-966E-4778-9179-6F01CD3C6891}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE17E6D2-966E-4778-9179-6F01CD3C6891}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FE17E6D2-966E-4778-9179-6F01CD3C6891}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FE17E6D2-966E-4778-9179-6F01CD3C6891}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B93CF3E-4C56-4CC2-B94A-874EB6280998}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E59B7D95-BFEB-49C8-8F98-D5986F1621CF}
+	EndGlobalSection
+EndGlobal
