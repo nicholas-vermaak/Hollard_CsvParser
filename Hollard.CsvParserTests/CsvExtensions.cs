@@ -23,42 +23,6 @@ namespace Hollard.CsvParserTests
             Assert.AreEqual(8, contactList.Count);
         }
 
-        [TestMethod]
-        public void TestGrouping()
-        {
-            //Create a file show the frequency of the first and last names ordered by frequency descending and then alphabetically ascending.
-            //Example(not what’s expected):
-            string[] csvData = GetTestData();
-
-            List<Contact> contactList = new List<Contact>();
-            contactList.PopulateFromCsv(csvData, sepeartors.ToArray());
-
-            //First Question
-            var firstNameList = contactList.Select(c => new { NameKey = c.FirstName });
-            var lastNameList = contactList.Select(c => new { NameKey = c.LastName });
-
-            var reportQuery = firstNameList.Concat(lastNameList)
-                            .GroupBy(c=>c.NameKey)
-                            .Select(grp => new
-                            {
-                                NameKey = grp.Key,
-                                Frequency = grp.Count()
-                            })
-                            .OrderByDescending(c=>c.Frequency)
-                            .ThenBy(c=>c.NameKey);
-
-            //Second QUestion
-            var orderedByStreetName = contactList
-                .Select(c => new
-                {
-                   orderByField = ExtractStreetName(c.Address),
-                   c.Address,
-                   c.FirstName,
-                   c.LastName,
-                   c.PhoneNumber,
-                }).OrderBy(c=>c.orderByField);
-        }
-
         private string ExtractStreetName(string address)
         {
             return address + "updated";
@@ -135,7 +99,6 @@ namespace Hollard.CsvParserTests
         private string[] GetTestData()
         {
             return File.ReadAllLines(dataFile);
-
         }
 
 

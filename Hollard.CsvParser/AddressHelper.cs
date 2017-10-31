@@ -10,7 +10,7 @@ namespace Hollard.CsvParser
     {
         public static string ExtractStreetName(string input)
         {
-            //A regex could be used, but I would only introduce that for more complex scenarios - I believe the below code is more readable which is why I chose this approach.
+            //A regex could be used, but I would only introduce that for more complex scenarios - I favoured readability in this instance
             string streetNumber = new string(input.TakeWhile(char.IsDigit).ToArray());
             return input.Replace(streetNumber, "").Trim();
         }

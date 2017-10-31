@@ -15,11 +15,16 @@ namespace Hollard.CsvParser.Tests
         [TestMethod()]
         public void CanExtractStreetName()
         {
-            string outStr = AddressHelper.ExtractStreetName("102 Long Lane");
             Assert.AreEqual("Crimson Rd", AddressHelper.ExtractStreetName("8 Crimson Rd"));
-            Assert.AreEqual("4th Avenue", AddressHelper.ExtractStreetName("94 4th Avenue"));
             Assert.AreEqual("Long Lane", AddressHelper.ExtractStreetName("102 Long Lane"));
             
         }
+        [TestMethod()]
+        public void CanExtractNumericStreetNames()
+        {
+            Assert.AreEqual("4th Avenue", AddressHelper.ExtractStreetName("94 4th Avenue"));
+
+        }
+
     }
 }
