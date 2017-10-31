@@ -8,13 +8,11 @@ namespace Hollard.CsvParser
 {
     public static class AddressHelper
     {
-        //public static string ExtractStreetName(string input)
-        //{
-        //    //Find n number of numbers at beginning of string and remove
-        //    var returnValue = input.Split(new char[] {' '});
-
-
-        //    return returnValue;
-        //}
+        public static string ExtractStreetName(string input)
+        {
+            //A regex could be used, but I would only introduce that for more complex scenarios - I believe the below code is more readable which is why I chose this approach.
+            string streetNumber = new string(input.TakeWhile(char.IsDigit).ToArray());
+            return input.Replace(streetNumber, "").Trim();
+        }
     }
 }

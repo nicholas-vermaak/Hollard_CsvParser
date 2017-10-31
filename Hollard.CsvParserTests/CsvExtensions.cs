@@ -46,6 +46,7 @@ namespace Hollard.CsvParserTests
                             })
                             .OrderByDescending(c=>c.Frequency)
                             .ThenBy(c=>c.NameKey);
+
             //Second QUestion
             var orderedByStreetName = contactList
                 .Select(c => new
