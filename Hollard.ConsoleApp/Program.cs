@@ -27,13 +27,17 @@ namespace Hollard.ConsoleApp
                 string addressOrderedByStreetLocation = reportGenerator.WriteAdressOrderedByStreetReport("Address_OrderedBy_StreetName.csv");
 
                 Console.WriteLine("Successfully generated the following reports:");
+                Console.WriteLine();
                 Console.WriteLine(nameFrequencyLocation);
+                Console.WriteLine(addressOrderedByStreetLocation);
+
 
                 Console.ReadKey();
             }
             catch (Exception ex)
             {
                 Console.WriteLine("There was an error generating reports...");
+                Console.ReadKey();
             }
 
 

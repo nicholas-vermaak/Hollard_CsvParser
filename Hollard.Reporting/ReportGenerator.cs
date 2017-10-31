@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Hollard.CsvParserExtensions;
 using System.IO;
+using Hollard.CsvParser;
 
 namespace Hollard.Reporting
 {
@@ -16,8 +17,6 @@ namespace Hollard.Reporting
         public ReportGenerator(string InputFile)
         {
             clientList = PopulateListFromCSV(InputFile);
-
-
         }
 
         public string WriteNameFrequencyReport(string Filename)
@@ -33,15 +32,24 @@ namespace Hollard.Reporting
                                 Frequency = grp.Count()
                             })
                             .OrderByDescending(c => c.Frequency)
-                            .ThenBy(c => c.NameKey).ToList();
-
+                            .ThenBy(c => c.NameKey)
+                            .ToList();
 
             return WriteReportToDisk(reportQuery.ToCsv(), Filename);
         }
 
         public string WriteAdressOrderedByStreetReport(string Filename)
         {
-            return "";
+            var reportQuery = clientList.Select(c => new
+            {
+                c.Address,
+                StreetName = AddressHelper.ExtractStreetName(c.Address)
+            })
+            .OrderBy(c=>c.StreetName)
+            .Select(c=> new {c.Address })
+            .ToList();
+
+            return WriteReportToDisk(reportQuery.ToCsv(), Filename);
         }
 
         private string WriteReportToDisk(string[] CsvRows, string Filename)
