@@ -51,9 +51,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ReportOutput\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Hollard.Reporting\Hollard.Reporting.csproj">
       <Project>{eb451c89-066b-47e4-ade2-8864a9f27c4b}</Project>

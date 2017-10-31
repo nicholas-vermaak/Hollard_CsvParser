@@ -42,10 +42,6 @@
   <ItemGroup>
     <Compile Include="AddressHelper.cs" />
     <Compile Include="CsvExtensions.cs" />
-    <Compile Include="CsvReader.cs" />
-    <Compile Include="CsvWriter.cs" />
-    <Compile Include="ICsvReader.cs" />
-    <Compile Include="ICsvWriter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -57,15 +57,10 @@
   </Choose>
   <ItemGroup>
     <Compile Include="AddressHelperTests.cs" />
-    <Compile Include="CsvReaderTests.cs" />
-    <Compile Include="CsvWriterTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CsvExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="data\data2.csv">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="data\data.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
